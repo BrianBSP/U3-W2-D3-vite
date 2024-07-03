@@ -5,9 +5,16 @@ import { NavDropdown } from "react-bootstrap";
 import netflixLogo from "./imgs/netflix_logo.png";
 import avatarImg from "./imgs/avatar.png";
 import kidsIcon from "./imgs/kids_icon.png";
+import { NavLink, useLocation } from "react-router-dom";
 //import "bootstrap-icons/font/bootstrap-icons.css";
+import { Search } from "react-bootstrap-icons";
+import { BellFill } from "react-bootstrap-icons";
 
 const MyNav = () => {
+  const location = useLocation();
+
+  console.log(location);
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -17,21 +24,31 @@ const MyNav = () => {
         <Navbar.Toggle aria-controls="navbarSupportedContent" />
         <Navbar.Collapse id="navbarSupportedContent">
           <Nav className="me-auto mb-2 mb-lg-0">
-            <Nav.Link href="#">Home</Nav.Link>
-            <Nav.Link href="#">Serie TV</Nav.Link>
-            <Nav.Link href="#">Movies</Nav.Link>
-            <Nav.Link href="#">Recently Added</Nav.Link>
-            <Nav.Link href="#">My List</Nav.Link>
+            <NavLink className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+              Home
+            </NavLink>
+            <NavLink className={`nav-link ${location.pathname === "/gallerie" ? "active" : ""}`} to="/gallerie">
+              Serie TV
+            </NavLink>
+            <NavLink className="nav-link text-dark" to="#">
+              Movies
+            </NavLink>
+            <NavLink className="nav-link text-dark" to="#">
+              Recently Added
+            </NavLink>
+            <NavLink className="nav-link text-dark" to="#">
+              My List
+            </NavLink>
           </Nav>
           <Nav className="d-flex align-items-center gap-3">
             <Nav.Link href="#">
-              <i className="bi bi-search text-white"></i>
+              <Search className="text-white" />
             </Nav.Link>
             <Nav.Link href="#">
               <img src={kidsIcon} alt="kids" width="35" height="35" />
             </Nav.Link>
             <Nav.Link href="#">
-              <i className="bi bi-bell-fill text-white"></i>
+              <BellFill className="text-white" />
             </Nav.Link>
             <NavDropdown
               bg="dark"

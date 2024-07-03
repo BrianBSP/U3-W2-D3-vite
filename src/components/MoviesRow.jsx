@@ -29,7 +29,7 @@ class MoviesRow extends Component {
         <h3 className="text-white text-start">{this.props.title}</h3>
         <Row>
           {this.state.films.slice(0, 6).map((movie) => (
-            <Col md={6} lg={4} xl={2}>
+            <Col key={movie.imdbID} md={6} lg={4} xl={2}>
               <Card.Img src={movie.Poster} alt={movie.Title} className="movie-img" />
             </Col>
           ))}
